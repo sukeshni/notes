@@ -1,0 +1,39 @@
+{
+    "disallowMixedSpacesAndTabs": true,
+    "disallowVar": true,
+
+    "requireCapitalizedConstructorsNew": true,
+    "requireCapitalizedConstructors": true,
+    "requireCommaBeforeLineBreak": true,
+    "requireCurlyBraces":  [
+        "if",
+        "else",
+        "for",
+        "while",
+        "do",
+        "try",
+        "catch"
+    ],
+    "requireFunctionDeclarations": true,
+    "requireLineFeedAtFileEnd": true,
+    "requireNumericLiterals": true,
+    "requireObjectKeysOnNewLine": true,
+    "requireOperatorBeforeLineBreak": true,
+    "requirePaddingNewLinesAfterUseStrict": true,
+    "requirePaddingNewLinesBeforeExport": true,
+    "requireSemicolons": true,
+    "requireSpaceAfterBinaryOperators": true,
+    "requireSpaceAfterComma": true,
+    "requireSpaceBeforeBinaryOperators": true,
+    "requireSpaceBeforeBlockStatements": true,
+    "requireSpaceBeforeKeywords": true,
+    "requireSpaceBeforeObjectValues": true,
+    "requireSpaceBetweenArguments": true,
+    "requireSpacesInConditionalExpression": true,
+    "requireSpread": true,
+
+    "validateIndentation": 4,
+    "validateNewlineAfterArrayElements": true,
+    "validateParameterSeparator": ", ",
+    "validateQuoteMarks": "'"
+}

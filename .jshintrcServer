@@ -1,0 +1,15 @@
+{
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 6,
+    "latedef": "nofunc",
+    "noarg": true,
+    "nocomma": true,
+    "strict": true,
+    "undef": true,
+    "unused": "vars",
+
+    "node": true,
+    "mocha": true
+}
