@@ -19,9 +19,16 @@ module.exports.get = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-    return req.note.update(req.body).then(() => {
-        res.json(req.note.expose());
-    });
+
+    if(req.body.hasOwnProperty('subject')) {
+        return Promise.resolve('Forbidden').then(() => {
+            res.sendStatus(403);
+        });
+    } else {
+        return req.note.update(req.body).then(() => {
+            res.json(req.note.expose());
+        });
+    }
 };
 
 module.exports.delete = (req, res) => {
