@@ -27,6 +27,31 @@ class Note {
     delete() {
         return this._note.destroy();
     }
+
+    versions() {
+        return this._note.getVersions({
+            order: [['createdAt', 'DESC']],
+        }).then(versions => {
+            return _.map(versions, version => {
+                return new domain.Version(version);
+            });
+        });
+    }
+
+    version(id) {
+        return this._note.getVersions({
+            where: {
+                id
+            },
+        }).then(versions => {
+            if (_.size(versions) !== 1) {
+                return q.reject(new domain.Error(domain.Error.Code.VERSION_NOT_FOUND));
+            }
+            else {
+                return new domain.Version(versions[0]);
+            }
+        });
+    }
 }
 
 module.exports = Note;

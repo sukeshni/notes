@@ -21,6 +21,7 @@ DomainError.Code = _.extend(_.transform([
 }), _.transform([
     'USER_NOT_FOUND',
     'NOTE_NOT_FOUND',
+    'VERSION_NOT_FOUND',
 ], (result, code) => {
     result[code] = {
         name: code,
