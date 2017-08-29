@@ -23,22 +23,16 @@ class Note {
 
     update(note) {
         const self = this;
-        const initialVersionId = 1;
-
         return model.sequelize.transaction(function (t) {
-            // chain all your queries here.
             return self._note.getVersions({
                 order: [['createdAt', 'DESC']],
             }, {transaction: t}).then(versions => {
-
-                const lastVersionId = versions.length > 0 ? versions[0].versionId + 1 : initialVersionId;
                 const version = {
                     subject: self._note.subject,
-                    body: self._note.body,
-                    versionId: lastVersionId
+                    body: note.body,
+                    versionId: versions[0].versionId + 1
                 }
-
-                return self._note.update(note, {transaction: t}).then( updatedNote => {
+                return self._note.update(note, {transaction: t}).then(updatedNote => {
                    return self._note.createVersion(version, {transaction: t}).then( function() {
                         return updatedNote
                    });
