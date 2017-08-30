@@ -2,6 +2,7 @@
 
 const _ = require('lodash');
 const model = require('../model');
+const domain = require('../domain');
 
 class Note {
     constructor(note) {

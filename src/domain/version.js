@@ -12,12 +12,13 @@ class Version {
     }
 
     expose() {
-        return _.pick(this._note, [
+        return _.pick(this._version, [
             'id',
             'subject',
             'body',
             'versionId',
-            'createdAt'
+            'createdAt',
+            'noteId'
         ]);
     }
 }
