@@ -3,7 +3,7 @@
 const _ = require('lodash');
 const model = require('../model');
 const domain = require('../domain');
-
+const q = require('q');
 class Note {
     constructor(note) {
         this._note = note;
@@ -32,10 +32,10 @@ class Note {
                     subject: self._note.subject,
                     body: note.body,
                     versionId: versions[0].versionId + 1
-                }
+                };
                 return self._note.update(note, {transaction: t}).then(updatedNote => {
                    return self._note.createVersion(version, {transaction: t}).then( function() {
-                        return updatedNote
+                        return updatedNote;
                    });
                 });
             });
