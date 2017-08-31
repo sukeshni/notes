@@ -58,8 +58,22 @@ class User {
     }
 
     createNote(note) {
-        return this._user.createNote(note).then(modelNote => {
-            return new domain.Note(modelNote);
+        const version = {
+            subject: note.subject,
+            body: note.body,
+            versionId: 1
+        };
+        const self = this;
+        return model.sequelize.transaction(function (t) {
+            return self._user.createNote(note, {transaction: t}).then(modelNote => {
+                return modelNote.createVersion(version, {transaction: t}).then( function() {
+                    return new domain.Note(modelNote);
+                });
+            });
+        }).then(function (result) {
+            return result;
+        }).catch(function (err) {
+            throw new Error(err);
         });
     }
 

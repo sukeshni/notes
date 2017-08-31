@@ -31,11 +31,14 @@ angular.module('app').config(function($routeProvider) {
     };
 
     const noteDetailPage = {
-        template: '<note-detail session="$resolve.session" note="$resolve.note"></note-detail>',
+        template: '<note-detail session="$resolve.session" note="$resolve.note" versions="$resolve.versions"></note-detail>',
         resolve: {
             session: Session => Session.current().$promise,
             note: (Note, $route) => Note.get({
                 id: $route.current.params.noteId
+            }).$promise,
+            versions: (Version, $route) => Version.query({
+                noteId: $route.current.params.noteId
             }).$promise
         }
     };

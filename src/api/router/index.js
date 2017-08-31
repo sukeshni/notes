@@ -41,6 +41,10 @@ function setupRoutesWithRequiredAuthentication(router) {
         '/notes/:noteId',
         route.note.get
     );
+    router.get(
+        '/notes/:noteId/versions',
+        route.note.versions
+    );
     router.put(
         '/notes/:noteId',
         apiMiddleware.jsonParser,
