@@ -58,12 +58,6 @@ class User {
     }
 
     createNote(note) {
-        return this._user.createNote(note).then(modelNote => {
-            return new domain.Note(modelNote);
-        });
-    }
-
-    createNote(note) {
         const version = {
             subject: note.subject,
             body: note.body,
