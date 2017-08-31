@@ -87,6 +87,19 @@ describe('Tests for api route note', function() {
                 res.json.calledWithExactly('exposedNote').should.be.true();
             });
         });
+
+        it('should not update a note subject then send 403 Forbidden status', () => {
+            req.note = note;
+
+            req.body = {
+                subject: 'updated subject'
+            };
+
+            return route.note.update(req, res).then(() => {
+                req.note.update.calledWithExactly(req.body).should.be.false();
+                res.sendStatus.calledWithExactly(403).should.be.true();
+            });
+        });
     });
 
     describe('delete', () => {
